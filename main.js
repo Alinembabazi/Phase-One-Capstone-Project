@@ -3,12 +3,9 @@ import { fetchBooks } from "./fetchBooks.js";
 const booksGrid = document.getElementById("booksGrid");
 const searchBtn = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
-const clearBtn = document.getElementById("clearBtn");
 const message = document.getElementById("message");
 
-
 function displayBooks(books) {
-
   booksGrid.innerHTML = "";
 
   if (books.length === 0) {
@@ -19,48 +16,51 @@ function displayBooks(books) {
   message.textContent = "";
 
   books.forEach(book => {
-
     const title = book.title;
     const author = book.authors.length > 0
       ? book.authors[0].name
       : "Unknown Author";
 
-    const cover = book.formats["image/jpeg"];
+    const cover = book.formats["image/jpeg"] 
+      || "https://via.placeholder.com/200x300?text=No+Image";
 
-    const download = book.formats["application/pdf"] 
-      || book.formats["application/epub+zip"]
-      || "#";
+    const readLink = `https://www.gutenberg.org/ebooks/${book.id}`;
 
     const card = document.createElement("div");
-    card.className = "bg-white rounded-lg shadow p-4";
-
+    card.className = "bg-white rounded-xl shadow-md hover:shadow-lg transition flex flex-col";
     card.innerHTML = `
-      <img src="${cover}" 
-           class="h-40 w-full object-cover rounded mb-4"/>
-      <h4 class="font-semibold">${title}</h4>
-      <p class="text-gray-600 text-sm">${author}</p>
+      <img src="${cover}" class="h-52 w-full object-cover rounded-t-xl">
 
-      <a href="${download}" target="_blank"
-         class="block mt-2 bg-green-500 text-white px-4 py-1 rounded text-center hover:bg-green-600">
-         Download
-      </a>
+      <div class="p-4 flex flex-col flex-grow">
 
-      <button 
-        class="mt-2 bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600"
-        onclick="addFavorite('${title}', '${author}')">
-        Add to Favorites
-      </button>
+        <h4 class="font-semibold text-gray-800 truncate" title="${title}">
+          ${title}
+        </h4>
+
+        <p class="text-gray-600 text-sm mb-4 truncate">${author}</p>
+
+        <div class="mt-auto flex gap-2">
+          <a href="${readLink}" target="_blank"
+             class="flex-1 text-center bg-green-500 text-white py-1 rounded hover:bg-green-600 text-sm">
+             Read
+          </a>
+
+          <button 
+            class="flex-1 bg-blue-500 text-white py-1 rounded hover:bg-blue-600 text-sm"
+            onclick="addFavorite('${title.replace(/'/g, "")}', '${author.replace(/'/g, "")}')">
+            Favorite
+          </button>
+        </div>
+
+      </div>
     `;
 
     booksGrid.appendChild(card);
   });
 }
 
-
 function addFavorite(title, author) {
-
   let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-
   const exists = favorites.find(book => book.title === title);
 
   if (exists) {
@@ -69,43 +69,23 @@ function addFavorite(title, author) {
   }
 
   favorites.push({ title, author });
-
   localStorage.setItem("favorites", JSON.stringify(favorites));
-
   alert("Added to favorites!");
 }
 
 window.addFavorite = addFavorite;
 
-
 searchBtn.addEventListener("click", async () => {
-
   const query = searchInput.value.trim();
-
   if (!query) return;
 
   message.textContent = "Loading free books...";
-
   const books = await fetchBooks(query);
-
   displayBooks(books);
-
 });
-
-
-clearBtn.addEventListener("click", () => {
-  searchInput.value = "";
-  booksGrid.innerHTML = "";
-  message.textContent = "Search cleared.";
-});
-
 
 window.addEventListener("DOMContentLoaded", async () => {
-
   message.textContent = "Loading free books...";
-
   const books = await fetchBooks("history");
-
   displayBooks(books);
-
 });
