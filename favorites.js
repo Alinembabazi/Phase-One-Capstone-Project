@@ -1,24 +1,18 @@
-export function getFavorites() {
-  return JSON.parse(localStorage.getItem("favorites")) || [];
-}
+export async function fetchBooks(query) {
 
-export function addFavorite(book) {
-  let favorites = getFavorites();
+  try {
 
-  // prevent duplicate books
-  if (!favorites.find(b => b.key === book.key)) {
-    favorites.push({
-      key: book.key,
-      title: book.title,
-      author: book.author_name?.[0] || "Unknown Author"
-    });
+    const response = await fetch(
+      `https://gutendex.com/books/?search=${query}`
+    );
 
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    const data = await response.json();
+
+    return data.results;
+
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    return [];
   }
-}
 
-export function removeFavorite(key) {
-  let favorites = getFavorites();
-  favorites = favorites.filter(book => book.key !== key);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
 }
