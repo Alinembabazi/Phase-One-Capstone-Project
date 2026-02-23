@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-200">
+
+<!-- NAVBAR -->
+<nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-2xl font-bold text-indigo-600">Book Explorer</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-900 hover:text-indigo-600 font-medium">Home</a>
+                    <a href="favorites.html" class="text-gray-900 hover:text-indigo-600 font-medium">Favorites</a>
+                    <a href="about.html" class="text-indigo-600 font-medium">About</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-900 hover:text-indigo-600 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="md:hidden hidden pb-4">
+                <a href="index.html" class="block py-2 text-gray-900 hover:text-indigo-600 font-medium">Home</a>
+                <a href="favorites.html" class="block py-2 text-gray-900 hover:text-indigo-600 font-medium">Favorites</a>
+                <a href="about.html" class="block py-2 text-indigo-600 font-medium">About</a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+
+
+
+<!-- HEADER SECTION -->
+<div class="p-8 bg-blue-300 text-center text-white">
+  <h2 class="text-3xl font-bold">About Book Explorer</h2>
+  <p class="mt-4">Learn about our mission and features</p>
+</div>
+
+<div class="grid grid-cols-3 gap-8 m-8">
+<!-- MISSION SECTION -->
+<div class="bg-white shadow rounded m-8 p-6 max-w-3xl mx-auto">
+  <h3 class="text-2xl font-bold text-center">Our Mission</h3>
+  <p class="mt-4 text-justify">
+    Book Explorer is designed to make book discovery simple and enjoyable.
+    We believe that everyone deserves access to great literature, and our
+    platform helps you find, explore, and save books that match your interests.
+  </p>
+  <p class="mt-4 text-justify">
+    Whether you're a casual reader or a book enthusiast, our intuitive
+    interface and powerful search capabilities make it easy to discover your
+    next favorite book.
+  </p>
+</div>
+<div class="border rounded-xl m-8 p-6 max-w-3xl mx-auto bg-white">
+<div class="p-2">
+    <h1 class="text-2xl font-bold  space-y-2 py-2"> Key Features</h1>
+    <h3 class="font-semibold py-1">Powerful Search</h3>
+    <p>Search for books by title, author, or keywords with real-time results.</p>
+
+</div>
+<div class="p-2">
+    <h3 class="font-semibold py-1 py-2">Save Favorites</h3>
+    <p>Build your personal collection by saving books you love.</p>
+</div>
+<div class="p-2">
+    <h3 class="font-semibold py-1">Responsive Design</h3>
+<p>Enjoy a seamless experience on any device, anywhere.</p>
+</div>
+<div class="p-2">
+    <h3 class="font-semibold py-1 py-2">Rich Database</h3>
+    <p>Access thousands of books from the Open Library API.</p>
+</div>
+</div>
+
+<div class="border rounded-xl m-8 p-6 max-w-3xl mx-auto bg-white space-y-2 items-center text-center py-20" >
+    <h1>Ready to Start Exploring?</h1>
+    <p >Discover thousands of amazing books and build your personal library today!</p>
+    <a href="index.html" class="inline-block px-8 py-3 bg-blue-200 text-gray-600 rounded-lg font-semibold hover:bg-gray-100 mt-20 ">
+                <i class="fas fa-book-open mr-2"></i> Start Browsing
+            </a>
+</div>
+</div>
+<!-- FOOTER -->
+<footer class="bg-gray-800 text-white text-center p-4 mt-10">
+  © 2026 Book Explorer
+</footer>
+<script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Initialize icons
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
