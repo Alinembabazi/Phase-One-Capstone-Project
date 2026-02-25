@@ -21,12 +21,10 @@ function displayBooks(books) {
       ? book.authors[0].name
       : "Unknown Author";
 
-    const cover = book.formats["image/jpeg"] 
-      || "https://via.placeholder.com/200x300?text=No+Image";
-
+    const cover = book.formats["image/jpeg"] || "https://via.placeholder.com/200x300?text=No+Image";
     const readLink = `https://www.gutenberg.org/ebooks/${book.id}`;
-
     const card = document.createElement("div");
+    
     card.className = "bg-white rounded-xl shadow-md hover:shadow-lg transition flex flex-col";
     card.innerHTML = `
       <img src="${cover}" class="h-52 w-full object-cover rounded-t-xl">
