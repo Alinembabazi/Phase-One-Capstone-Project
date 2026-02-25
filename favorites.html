@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Favorites - Book Explorer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-white flex flex-col min-h-screen">
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 w-full bg-gray-600 text-white p-4 flex justify-between items-center shadow-md z-50">
+    <h1 class="font-bold text-lg">Book Explorer</h1>
+    <div class="space-x-4">
+      <a href="index.html" class="hover:text-gray-200">Home</a>
+      <a href="favorites.html" class="font-semibold underline">Favorites</a>
+      <a href="about.html" class="hover:text-gray-200">About</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow pt-24">
+
+    <section class="text-center">
+      <h2 class="text-3xl font-bold mb-8">Your Favorite Books</h2>
+
+      <div id="favoritesGrid"
+           class="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 px-6">
+      </div>
+
+      <!-- Empty Message -->
+      <p id="emptyMessage" class="text-gray-500 mt-6 hidden">
+        You have not added any favorite books yet.
+      </p>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-600 text-white py-6 mt-12">
+    <div class="container mx-auto text-center space-y-2">
+      <h3 class="text-xl font-semibold">Book Explorer</h3>
+      <p class="text-gray-300">Discover, explore, and save your favorite books</p>
+      <p class="text-gray-400">Powered by Open Library API</p>
+      <p class="text-gray-500">&copy; 2024 Book Explorer. Educational Project.</p>
+    </div>
+  </footer>
+
+  <script src="js file/favorites.js"></script>
+
+</body>
+</html>
