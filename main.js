@@ -1,4 +1,4 @@
-import { fetchBooks } from "./fetchBooks.js";
+import { fetchBooks } from "./fetchBook.js";
 
 const booksGrid = document.getElementById("booksGrid");
 const searchBtn = document.getElementById("searchBtn");
