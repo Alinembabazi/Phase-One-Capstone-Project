@@ -39,7 +39,7 @@ function displayBooks(books) {
 
         <div class="mt-auto flex gap-2">
           <a href="${readLink}" target="_blank"
-             class="flex-1 text-center bg-green-500 text-white py-1 rounded hover:bg-green-600 text-sm">
+             class="flex-1 text-center bg-gray-800 text-white py-1 rounded hover:bg-green-300 text-sm">
              Read
           </a>
 
